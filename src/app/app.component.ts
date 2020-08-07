@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   title = 'curso-angular';
 
   ngOnInit(){
-
     /*
     funcion flecha o arrow function
     si no ponemos parametros solo se ponen los (), si ponemos tenemos que poner todo lo necesario
@@ -93,13 +92,16 @@ export class AppComponent implements OnInit {
 
     2 > 1 ? 'si' : 'no';
 
-    */
-
     const array = from([1,2,3,4,5,6]);
     array.subscribe(s => console.log('item:', s))
 
     const aux = fromEvent(document, 'mousemove');
 
     //aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
+    */
+  }
+
+  clickSaveChild(event){
+    console.log("EVENT CHILD: ", event)
   }
 }
