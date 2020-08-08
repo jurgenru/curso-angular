@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
-export class TestComponent implements OnInit {
+export class TestComponent implements OnChanges, OnInit {
 
   @Input() name : string;
   @Input() age : number;
@@ -13,7 +13,13 @@ export class TestComponent implements OnInit {
 
   @Output() clickSave = new EventEmitter();
 
+  user:string = "maria";
+
   constructor() {
+
+  }
+
+  ngOnChanges(){
 
   }
 

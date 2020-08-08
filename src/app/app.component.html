@@ -1,8 +1,10 @@
 <p>Jürgen</p>
 
 <app-test 
-name = "jürgen ruegenberg"
+[name] = "name"
 age = "22"
 description = "buen chango"
 (clickSave) = "clickSaveChild($event)"
 ></app-test>
+
+<button (click)=changesName()>changes names</button>

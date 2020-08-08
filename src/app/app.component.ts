@@ -104,4 +104,10 @@ export class AppComponent implements OnInit {
   clickSaveChild(event){
     console.log("EVENT CHILD: ", event)
   }
+
+  name = "jurgen";
+
+  changesName(){
+    this.name = 'maria';
+  }
 }
