@@ -57,3 +57,13 @@ Mandando una cantidad de solo 1 clase-->
 <div [class.test1] = "auxClass">
   class example
 </div>
+
+<div *ngFor="let person of persons">
+  <div [ngStyle]="{'background':person.enable ? 'yellow' : 'red'}">
+    <persona [name] = "person.name"
+    [lastName] = "person.lastName"
+    [age] = "person.age"
+    [enable] = "person.enable">
+    </persona>
+  </div>
+</div>

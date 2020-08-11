@@ -19,6 +19,33 @@ export class AppComponent implements OnInit {
 
   auxClass = true; 
 
+  persons = [
+    {
+      name : 'jurgen',
+      lastName : 'jurge',
+      age : 21,
+      enable : true
+    },
+    {
+      name : 'andres',
+      lastName : 'andres',
+      age : 21,
+      enable : false
+    },
+    {
+      name : 'felipe',
+      lastName : 'felipe',
+      age : 21,
+      enable : true
+    },
+    {
+      name : 'maria',
+      lastName : 'maria',
+      age : 21,
+      enable : false
+    }
+  ]
+
   ngOnInit(){
     /*
     funcion flecha o arrow function
