@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
 
   personas = ["pablo","juan","maria"]
 
-  aux=3;
+  aux = 2;
+
+  auxColor = 'red'; 
 
   ngOnInit(){
     /*

@@ -26,3 +26,23 @@ description = "buen chango"
   <p *ngSwitchDefault>No es ni 3 ni 2</p>
 </div>
 
+<!--ngStyle ejemplo de como es un style
+<div style="border : 1px solid red; color : green">
+  persona
+</div>-->
+
+<!--ngStyle 
+Este ejemplo es de el style de como se pondria un color ya definido y no que vaya cambiando como con aux color '1px solid red'-->
+<button (click)="auxColor = 'yellow'">amarillo</button>
+<button (click)="auxColor = 'green'">verde</button>
+<button (click)="auxColor = 'red'">rojo</button>
+<!--Esto es para mas de un estilo modifica mas de un estilo-->
+<div [ngStyle]="{'border' : '1px solid ' + auxColor, 'color' : auxColor}">
+  persona
+</div>
+<!--Esto es para un estilo solo modificar uno-->
+<div [style.color]="auxColor">
+  autos
+</div>
+
+<!--ngClass-->
