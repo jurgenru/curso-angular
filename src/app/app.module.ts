@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
+//aqui le cambie el nombre de la carpeta antes decia test de como lo creamos la primera vez con el profesor
+import { TestComponent } from './components/test.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

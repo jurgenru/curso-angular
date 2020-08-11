@@ -1,6 +1,6 @@
 <p>Jürgen</p>
 <!--ngif true-->
-<app-test *ngIf="sw" name="jurgen"></app-test>
+<!--<app-test *ngIf="sw" name="jurgen"></app-test>-->
 <!--ngif false-->
 <button (click) = "sw = false;">ChangeSW</button>
 <!--<app-test name="jurgen"></app-test>
@@ -14,6 +14,6 @@ description = "buen chango"
 <button (click)=changesName()>changes names</button>-->
 
 <!--ng for-->
-<div *ngFor="let person of personas">
-  <p>{{person}}</p>
+<div *ngFor="let person of personas; let i = index">
+  <p>{{person}} ===== {{i}}</p>
 </div>
