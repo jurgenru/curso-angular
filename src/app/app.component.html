@@ -45,4 +45,15 @@ Este ejemplo es de el style de como se pondria un color ya definido y no que vay
   autos
 </div>
 
-<!--ngClass-->
+<!--ngClass
+Mandando una cantidad n de clases-->
+<button (click)="auxClass = !auxClass">Change class</button>
+<div [ngClass]="{'test1': auxClass, 'test2': !auxClass}">
+  ng class example
+</div>
+
+<!--ngClass
+Mandando una cantidad de solo 1 clase-->
+<div [class.test1] = "auxClass">
+  class example
+</div>
