@@ -17,3 +17,12 @@ description = "buen chango"
 <div *ngFor="let person of personas; let i = index">
   <p>{{person}} ===== {{i}}</p>
 </div>
+
+<!--ngSwitch-->
+<!--Es un switch normal-->
+<div [ngSwitch]="2">
+  <p *ngSwitchCase="3">El valor es 3</p>
+  <p *ngSwitchCase="2">El valor es 2</p>
+  <p *ngSwitchDefault>No es ni 3 ni 2</p>
+</div>
+
