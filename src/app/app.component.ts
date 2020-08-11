@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
 
   sw = true;
 
+  personas = [1,2,3,4,5,6];
+
   ngOnInit(){
     /*
     funcion flecha o arrow function
