@@ -1,5 +1,9 @@
 <p>Jürgen</p>
-
+<!--ngif true-->
+<app-test *ngIf="sw" name="jurgen"></app-test>
+<!--ngif false-->
+<button (click) = "sw = false;">ChangeSW</button>
+<!--<app-test name="jurgen"></app-test>
 <app-test 
 [name] = "name"
 age = "22"
@@ -7,4 +11,4 @@ description = "buen chango"
 (clickSave) = "clickSaveChild($event)"
 ></app-test>
 
-<button (click)=changesName()>changes names</button>
+<button (click)=changesName()>changes names</button>-->
