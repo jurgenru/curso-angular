@@ -1,9 +1,32 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
 
+/*Otro template 
+<!-- <p>Input/Output</p>
+<p>Entrada Name: {{name}}</p>
+<p>Entrada Age: {{age}}</p>
+<p>Entrada Descripcion: {{description}}</p>
+
+<button (click)="onClickSave()">Save</button>
+
+<input type="text" [(ngModel)]="name">
+
+<p>User: {{user}}</p>-->
+*/
+
 @Component({
   selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  template: `
+  <div style = "border: 1px solid red">
+  <p>TEST</p>
+  <input type="text" [(ngModel)]="name">
+  <p>{{name}}</p>
+  </div>
+  `,
+  styles: [
+  `
+  
+  `
+  ]
 })
 export class TestComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
