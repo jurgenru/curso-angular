@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   persons = [
     {
-      name : 'jurgen',
+      name : 'asdsad',
       lastName : 'jurge',
       age : 21,
       enable : true

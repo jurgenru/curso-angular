@@ -58,6 +58,8 @@ Mandando una cantidad de solo 1 clase-->
   class example
 </div>
 
+<!--ngFor
+Recorre de la lista persons y nos devuelve en la vista-->
 <div *ngFor="let person of persons">
   <div [ngStyle]="{'background':person.enable ? 'yellow' : 'red'}">
     <persona [name] = "person.name"
@@ -68,6 +70,8 @@ Mandando una cantidad de solo 1 clase-->
   </div>
 </div>
 
+
+<!--Components y modulos para que se vean en nuestra vista-->
 <app-prod1></app-prod1>
 
 <app-prod2></app-prod2>
@@ -83,3 +87,16 @@ Mandando una cantidad de solo 1 clase-->
 <app-us1></app-us1>
 
 <app-us2></app-us2>
+
+<!--pipes-->
+<p>PIPES</p>
+
+<p>PIPE JSON: {{persons | json}}</p>
+
+<p>PIPE UPPERCASE: {{ name | uppercase}}</p>
+
+<p>PIPE LOWERCASE: {{ na | lowercase}}</p>
+
+<p>PIPE DATE: {{'12/08/2020' | date: "MM/dd/yy"}}</p>
+
+<p>MI PROPIO PIPE: {{name | mipipe}}</p>

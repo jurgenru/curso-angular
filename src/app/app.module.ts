@@ -8,12 +8,14 @@ import { PersonaModule } from './modules/persona/persona.module';
 import { ProductoModule } from './modules/producto/producto.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
+import { MipipePipe } from './pipes/mipipe.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    MipipePipe
   ],
   imports: [
     BrowserModule,
