@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-//aqui le cambie el nombre de la carpeta antes decia test de como lo creamos la primera vez con el profesor
 import { TestComponent } from './components/test.component';
 import { FormsModule } from '@angular/forms';
 import { PersonaModule } from './modules/persona/persona.module';
 import { ProductoModule } from './modules/producto/producto.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { UserModule } from './modules/user/user.module';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ProductoModule } from './modules/producto/producto.module';
     BrowserModule,
     FormsModule,
     PersonaModule,
-    ProductoModule
+    ProductoModule,
+    AdminModule,
+    UserModule
   ],
   providers: [
 
