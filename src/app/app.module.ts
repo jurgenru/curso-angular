@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './components/test.component';
 import { FormsModule } from '@angular/forms';
 import { PersonaModule } from './modules/persona/persona.module';
+import { ProductoModule } from './modules/producto/producto.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PersonaModule } from './modules/persona/persona.module';
   imports: [
     BrowserModule,
     FormsModule,
-    PersonaModule
+    PersonaModule,
+    ProductoModule
   ],
   providers: [
 
