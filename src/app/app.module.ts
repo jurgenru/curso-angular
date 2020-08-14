@@ -10,13 +10,16 @@ import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
 import { MipipePipe } from './pipes/mipipe.pipe';
 import { ExpoPipe } from './pipes/expo.pipe';
-
+import { PurePipe } from './pipes/pure.pipe';
+import { ImpurePipe } from './pipes/impure.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     MipipePipe,
-    ExpoPipe
+    ExpoPipe,
+    PurePipe,
+    ImpurePipe
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,9 @@ export class AppComponent implements OnInit {
   auxClass = true;
 
   auxNumber : number;
-  auxExponent : number; 
+  auxExponent : number;
+
+  numbers = [1,2,3,4,5,6,7,8,9,10]; 
 
   persons = [
     {
@@ -139,8 +141,23 @@ export class AppComponent implements OnInit {
 
     //aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
     */
+    console.log('PURA: ', this.pura(6,2));
+    console.log('IMPURA: ', this.impupura(6,2));
   }
 
+  /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*/
+
+  pura(a:number,b:number){
+    return a + b;
+  }
+
+  /*Funcion IMPURA no podemos saber la salida exacta que va a tener y no podemos saber que va a devolver cual va a ser su salida, no se puede predecir la salida porque existe algo adentro que no se sabe que va adevolver*/
+
+  impura(a:number,b:number){
+    return a + b + Math.random();
+  }
+
+  /*Esto es para lo de los nombres*/
   clickSaveChild(event){
     console.log("EVENT CHILD: ", event)
   }

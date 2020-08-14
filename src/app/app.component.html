@@ -108,7 +108,14 @@ Recorre de la lista persons y nos devuelve en la vista-->
 
 <p>EXPO PIPE: {{4 | expo : 2 : 'hola'}}</p>
 
+<p>Escribe los valores que desees:</p>
 VALUE : <input type="text" [(ngModel)]="auxNumber">
 EXPONENT : <input type="text" [(ngModel)]="auxExponent">
 
-<p>{{auxNumber | expo : auxExponent : 'Ho'}}</p>
+<p>{{auxNumber | expo : auxExponent : 'Hola'}}</p>
+
+<p>PIPE PURE: {{numbers | pure}}</p>
+
+<p>PIPE IMPURE: {{numbers | impure}}</p>
+
+<button (click)="numbers.push(4)">Add</button>
