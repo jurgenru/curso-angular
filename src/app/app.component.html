@@ -121,16 +121,22 @@ EXPONENT : <input type="text" [(ngModel)]="auxExponent">
 
 <button (click)="numbers.push(4)">Add</button>
 
+<!--<div appNgColor id="yo" class = "test">
+  Jürgen
+</div>
+<br>
+<br>
+
 <div appNgColor id="yo" class = "test">
   Jürgen
 </div>
 <br>
 <br>
+
 <div appNgColor id="yo" class = "test">
   Jürgen
-</div>
-<br>
-b
-<div appNgColor id="yo" class = "test">
+</div>-->
+
+<div [appNgColor]="'green'" [secondColor]="'yellow'">
   Jürgen
 </div>
