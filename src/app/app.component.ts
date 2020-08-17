@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
     //aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
     */
     console.log('PURA: ', this.pura(6,2));
-    console.log('IMPURA: ', this.impupura(6,2));
+    console.log('IMPURA: ', this.impura(6,2));
   }
 
   /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*/
