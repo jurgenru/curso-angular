@@ -110,6 +110,7 @@ Recorre de la lista persons y nos devuelve en la vista-->
 
 <p>Escribe los valores que desees:</p>
 VALUE : <input type="text" [(ngModel)]="auxNumber">
+<p></p>
 EXPONENT : <input type="text" [(ngModel)]="auxExponent">
 
 <p>{{auxNumber | expo : auxExponent : 'Hola'}}</p>
@@ -119,3 +120,7 @@ EXPONENT : <input type="text" [(ngModel)]="auxExponent">
 <p>PIPE IMPURE: {{numbers | impure}}</p>
 
 <button (click)="numbers.push(4)">Add</button>
+
+<div appNgColor id="yo" class = >
+  Jürgen
+</div>

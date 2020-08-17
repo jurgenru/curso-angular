@@ -12,6 +12,7 @@ import { MipipePipe } from './pipes/mipipe.pipe';
 import { ExpoPipe } from './pipes/expo.pipe';
 import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
+import { NgColorDirective } from './directives/ng-color.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { ImpurePipe } from './pipes/impure.pipe';
     MipipePipe,
     ExpoPipe,
     PurePipe,
-    ImpurePipe
+    ImpurePipe,
+    NgColorDirective
   ],
   imports: [
     BrowserModule,
