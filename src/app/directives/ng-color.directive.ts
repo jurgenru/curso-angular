@@ -10,12 +10,12 @@ export class NgColorDirective {
 
   /*Escuchar un evento en donde este declarado. Escucha cualquier elemento o componente donde este este elemento. EN este ejemplo vamos a escuchar lo del mouse que esta haciendo */
   @HostListener('mouseenter') onMouseEnter(){
-    console.log('Mouse enter')
+    //console.log('Mouse enter')
     this.changeCOlor(this.color);
   }
 
   @HostListener('mouseleave') onMouseLeave(){
-    console.log('Mouse leave')
+    //console.log('Mouse leave')
     //this.changeCOlor('grey')
     //this.el.nativeElement.style.backgroundColor = this.color;
     this.changeCOlor(this.secondColor);

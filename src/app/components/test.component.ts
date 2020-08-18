@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChange } from '@angular/core';
 
 /*Otro template 
 <!-- <p>Input/Output</p>
@@ -17,9 +17,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, Aft
   selector: 'app-test',
   template: `
   <div style = "border: 1px solid red">
-  <p>TEST</p>
-  <input type="text" [(ngModel)]="name">
-  <p>{{name}}</p>
+  <p>Name: {{name}}</p>
+  <p>LastName: {{lastName}}</p>
   </div>
   `,
   styles: [
@@ -30,44 +29,59 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, Aft
 })
 export class TestComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  @Input()name : string;
+//@Input() name:string;
+
+intermediaria : string;
+
+  @Input()
+    get name(){
+      return this.intermediaria;
+    }
+    set name(name:string){
+      this.intermediaria = 'AAAA ' + name;
+    }
 
   constructor(){
 
   }
 
   ngOnInit(){
-    console.log("OnInit")
+  //  console.log("OnInit")
   }
+/  @Input() lastName: string;
 
-  ngOnChanges(){
-    console.log("OnChanges")
+  ngOnChanges(changes: SimpleChange){
+    if (changes && changes.lastName && changes.lastName.currentValue){
+      console.log("On changes", changes.lastName.currentValue);
+      const aux = 'AAAAAAAAAAAAAA ' + changes.lastName.currentValue;
+      this.lastName = aux; 
+    }
   }
 
   ngDoCheck(){
-    console.log("DoCheck")
+    //console.log("DoCheck")
   }
 
   /* El primero verifica el contenido, la segunda se ejecuta despues de verificar el contenido, El tercero verifica  que se cargen las vistas, El ultimo va a verificar despues de que se cargen las vistas (Los primeros dos son para verificar el contenido, Los ultimos dos verifican la vista)*/
 
   ngAfterContentInit(){
-    console.log("AfterContentInit")
+    //console.log("AfterContentInit")
   }
 
   ngAfterContentChecked(){
-    console.log("AfterContentChecked")
+    //console.log("AfterContentChecked")
   }
 
   ngAfterViewInit(){
-    console.log("AfterViewInit")
+    //console.log("AfterViewInit")
   }
 
   ngAfterViewChecked(){
-    console.log("AfterViewChecked")
+    //console.log("AfterViewChecked")
   }
 
   ngOnDestroy(){
-    console.log("OnDestroy")
+    //console.log("OnDestroy")
   }
 
 /*

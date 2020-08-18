@@ -136,7 +136,13 @@ EXPONENT : <input type="text" [(ngModel)]="auxExponent">
 <div appNgColor id="yo" class = "test">
   Jürgen
 </div>-->
+<br>
+Directives
 
 <div [appNgColor]="'green'" [secondColor]="'yellow'">
   Jürgen
 </div>
+
+<button (click)="name = 'maria' ; lastName = 'rodriguez'">changeName</button>
+
+<app-test [name]="name" [lastName]="lastName"></app-test>
