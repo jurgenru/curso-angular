@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   sw = true;
 
-  personas = ["pablo","juan","maria"]
+  personas = ['pablo', 'juan', 'maria'];
 
   aux = 2;
 
@@ -19,10 +19,10 @@ export class AppComponent implements OnInit {
 
   auxClass = true;
 
-  auxNumber : number;
-  auxExponent : number;
+  auxNumber: number;
+  auxExponent: number;
 
-  numbers = [1,2,3,4,5,6,7,8,9,10]; 
+  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   persons = [
     {
@@ -49,20 +49,22 @@ export class AppComponent implements OnInit {
       age : 21,
       enable : false
     }
-  ]
+  ];
+
+  name = 'jurgen';
 
   ngOnInit(){
     /*
     funcion flecha o arrow function
     si no ponemos parametros solo se ponen los (), si ponemos tenemos que poner todo lo necesario
-    () => 'hola' es igual que la funcion de abajo 
-    
+    () => 'hola' es igual que la funcion de abajo
+
     function hola(){
       return 'hola';
     }
 
     (s) => (
-      const b = b * 2 
+      const b = b * 2
       return b
     )
 
@@ -141,28 +143,26 @@ export class AppComponent implements OnInit {
 
     //aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
     */
-    console.log('PURA: ', this.pura(6,2));
-    console.log('IMPURA: ', this.impura(6,2));
+    console.log('PURA: ', this.pura(6, 2));
+    console.log('IMPURA: ', this.impura(6, 2));
   }
 
   /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*/
 
-  pura(a:number,b:number){
+  // tslint:disable-next-line:typedef
+  pura(a: number, b: number){
     return a + b;
   }
 
   /*Funcion IMPURA no podemos saber la salida exacta que va a tener y no podemos saber que va a devolver cual va a ser su salida, no se puede predecir la salida porque existe algo adentro que no se sabe que va adevolver*/
-
-  impura(a:number,b:number){
+  impura(a: number, b: number){
     return a + b + Math.random();
   }
 
   /*Esto es para lo de los nombres*/
   clickSaveChild(event){
-    console.log("EVENT CHILD: ", event)
+    console.log('EVENT CHILD: ', event);
   }
-
-  name = "jurgen";
 
   changesName(){
     this.name = 'maria';

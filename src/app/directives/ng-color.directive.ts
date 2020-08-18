@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class NgColorDirective {
 
-  @Input('appNgColo') color:string;
+  @Input('appNgColor') color:string;
   @Input() secondColor:string;
 
   /*Escuchar un evento en donde este declarado. Escucha cualquier elemento o componente donde este este elemento. EN este ejemplo vamos a escuchar lo del mouse que esta haciendo */
