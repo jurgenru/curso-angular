@@ -48,7 +48,7 @@ intermediaria : string;
   ngOnInit(){
   //  console.log("OnInit")
   }
-/  @Input() lastName: string;
+  @Input() lastName: string;
 
   ngOnChanges(changes: SimpleChange){
     if (changes && changes.lastName && changes.lastName.currentValue){

@@ -13,6 +13,7 @@ import { ExpoPipe } from './pipes/expo.pipe';
 import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
+import { NgFocusDirective } from './directives/ng-focus.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NgColorDirective } from './directives/ng-color.directive';
     ExpoPipe,
     PurePipe,
     ImpurePipe,
-    NgColorDirective
+    NgColorDirective,
+    NgFocusDirective
   ],
   imports: [
     BrowserModule,
