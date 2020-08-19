@@ -8,7 +8,7 @@ export class NgFocusDirective {
   @Output() appNgFocus = new EventEmitter();
 
   @HostListener('document:click',['$event', '$event.target']) clickOutside(event, eventTarget){
-    console.log('clclclclc', this.el.nativeElement.contains(eventTarget))
+    //console.log('clclclclc', this.el.nativeElement.contains(eventTarget))
 
     const aux = this.el.nativeElement.contains(eventTarget);
 

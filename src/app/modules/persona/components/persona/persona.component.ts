@@ -12,6 +12,11 @@ export class PersonaComponent implements OnInit {
   @Input() age : number;
   @Input() enable : boolean;
 
+  @Input() nombre : string;
+  @Input() stock : number;
+  @Input() precio : number;
+  @Input() tipo : string;
+
   constructor() { }
 
   ngOnInit() {

@@ -143,9 +143,24 @@ Directives
   Jürgen
 </div>
 
-<button (click)="name = 'maria' ; lastName = 'rodriguez'">changeName</button>
+<!--<button (click)="name = 'maria' ; lastName = 'rodriguez'">changeName</button>-->
 
 <app-test [name]="name" [lastName]="lastName"></app-test>
 
 <br>
 <div style="border: 1px solid green" (appNgFocus)="name = 'aaaaaa'">{{name}}</div>
+
+EXAMEN
+Pedidos ya
+
+<p>Total: {{totalStock}}</p>
+<div *ngFor="let restaurant of restaurants">
+  <div [ngStyle]="{'background':restaurant.stock > 0 ? 'orange' : 'red'}" >   
+    <persona
+    [nombre] = "restaurant.nombre"
+    [stock] = "restaurant.stock"
+    [precio] = "restaurant.precio"
+    [tipo] = "restaurant.tipo">
+    </persona>
+  </div>
+</div>
