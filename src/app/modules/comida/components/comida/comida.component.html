@@ -1,4 +1,4 @@
-<div [style.background]="stock === 0 ? 'red' : 'orange'"
+<div [style.background]="stock != 0 ? 'orange' : 'red'"
 style="float: left; margin: 10px; padding: 10px;">
 	  <p>Nombre: {{nombre | uppercase}}</p>
 	  <p>Stock: {{stock}}</p>
