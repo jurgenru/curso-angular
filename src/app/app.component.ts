@@ -9,13 +9,33 @@ import { from, fromEvent } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'curso-angular';
 
-  ngOnInit(){
-      const array = from([1,2,3,4,5,6]);
-      array.subscribe(a => console.log('items: ', a))
- 
-      const aux = fromEvent(document, 'mousemove');
+  restaurants = [
+  {
+  nombre : 'khao soi', stock:1, precio : 20, tipo : 'internacional'},
+  {
+  nombre : "sajta ", stock: 2, precio : 42, tipo : "nacional"},
+  {
+  nombre : "semla ", stock: 0, precio : 52, tipo : "internacional"},
+  {
+  nombre : "silpancho", stock: 45, precio : 5, tipo : "nacional"},
+  {
+  nombre : "pulao", stock: 20, precio : 41, tipo : "internacional"},
+  {
+  nombre : "saice ", stock: 1, precio : 7, tipo : "nacional"},
+  {
+  nombre : "poutine", stock: 4, precio : 10, tipo : "internacional"},
+  {
+  nombre : "chicharron", stock: 0, precio : 4, tipo : "nacional"},
+  {
+  nombre : "fricase ", stock: 33, precio : 47, tipo : "nacional"},
+  {
+  nombre : "sushi", stock: 75, precio : 5, tipo : "internacional"},
+  ]
 
-      aux.subscribe(a => console.log('event: ', a.clientX + ', ' + a.clientY));
+  totalStock = this.restaurants.reduce((a, v) => (a + v.stock))
+
+  ngOnInit(){
+      
   }
 
 }
