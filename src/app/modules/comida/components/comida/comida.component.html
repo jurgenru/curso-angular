@@ -1,6 +1,10 @@
-<div style="display : flex; flex-direction : column; border : 1px solid red;">
-  <span>Name: {{nombre}}</span>
-  <span>Stock: {{stock}}</span>
-  <span>Price: {{precio}}</span>
-  <span>Type: {{tipo}}</span>
-</div>
+<div [style.background]="stock === 0 ? 'red' : 'orange'"
+style="float: left; margin: 10px; padding: 10px;">
+	  <p>Nombre: {{nombre | uppercase}}</p>
+	  <p>Stock: {{stock}}</p>
+    <p>Precio: {{getPrecio(precio)}}</p>
+    <p>Tipo: {{tipo}}</p>
+	  <button (click)="onComprar()" [disabled]="stock === 0">
+      Comprar
+    </button>
+  </div>

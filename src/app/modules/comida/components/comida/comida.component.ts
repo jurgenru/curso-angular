@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'comida',
@@ -16,10 +16,17 @@ export class ComidaComponent implements OnInit {
   @Input() stock : number;
   @Input() precio : number;
   @Input() tipo : string;
+  @Output() comprar = new EventEmitter()
 
   constructor() { }
 
-  ngOnInit() {
+  onComprar(){
+    this.comprar.emit();
+  }
+
+  getPrecio(precio: number) {
+    if (this.tipo === "nacional") return this.precio + " Bs";
+    if (this.tipo === "internacional") return this.precio + " $";
   }
 
 }

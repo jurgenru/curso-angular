@@ -1,13 +1,36 @@
+<div>
+  
+<p *ngIf="getTotalStock() === 0">
+    VENDISTE TODO
+</p>
 
-<p>{{totalStock}}</p>
+<p>Stock Total: {{getTotalStock()}}</p>
 
-<div *ngFor="let restaurant of restaurants">
-  <div [ngStyle]="{'background':restaurant.stock > 0 ? 'orange' : 'red'}" >   
-    <comida
-    [nombre] = "restaurant.nombre"
-    [stock] = "restaurant.stock"
-    [precio] = "restaurant.precio"
-    [tipo] = "restaurant.tipo">
-    ></comida>
-  </div>
+	<p>Nacional</p>
+
+	<div style="display: flex; flexDirection: row;">
+		<div *ngFor="let restaurant of comida.nacional">
+			<comida
+      [nombre]="restaurant.nombre"
+      [stock]="restaurant.stock"
+      [precio]="restaurant.precio"
+      [tipo]="restaurant.tipo"
+      (comprar)="comprar(restaurant, 'nacional')">
+      </comida>
+		</div>  
+	</div>
+
+  <p>Interacional</p>
+
+	<div style="display: flex; flexDirection: row;">
+		<div *ngFor="let restaurant of comida.internacional">
+			<comida
+      [nombre]="restaurant.nombre"
+      [stock]="restaurant.stock"
+      [precio]="restaurant.precio"
+      [tipo]="restaurant.tipo"
+      (comprar)="comprar(restaurant, 'internacional')">
+      </comida>
+		</div>  
+	</div>
 </div>
