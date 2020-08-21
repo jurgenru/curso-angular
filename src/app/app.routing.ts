@@ -16,7 +16,8 @@ const routes: Routes = [
     ]
   },
   {path: 'about', component: AboutComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'userr', loadChildren: () => import('./modules/userr/userr.module').then(m => m.UserrModule)}
 ];
 
 /**forChild son rutas niños se colocan cuando de un padre salen sus niños subrutas de una vista
