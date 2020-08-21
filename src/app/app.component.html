@@ -1,17 +1,3 @@
-EXAMEN
-Pedidos ya
-
-<div *ngFor="let restaurant of restaurants">
-  <div [ngStyle]="{'background':restaurant.stock > 0 ? 'orange' : 'red'}" >
-    <persona
-      [nombre] = "restaurant.nombre"
-      [stock] = "restaurant.stock"
-      [precio] = "restaurant.precio"
-      [tipo] = "restaurant.tipo">
-    </persona>
-  </div>
-</div>
-
 <p>Componentes y Routing</p>
 <!--botones para no cambiar el path en el buscador y poniendo el enter-->
 <button routerLink="home">HOME</button>
@@ -19,7 +5,8 @@ Pedidos ya
 <button routerLink="about">ABOUT</button>
 
 <div style="border: 1px solid red">
-  <router-outlet></router-outlet>
+  <router-outlet>
+  </router-outlet>
 </div>
 
 <!--<p>Jürgen</p>
