@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChange } from '@angular/core';
 
-/*Otro template 
+/*Otro template
 <!-- <p>Input/Output</p>
 <p>Entrada Name: {{name}}</p>
 <p>Entrada Age: {{age}}</p>
@@ -23,11 +23,11 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, Aft
   `,
   styles: [
   `
-  
+
   `
   ]
 })
-export class TestComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+export class TestComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
 //@Input() name:string;
 
@@ -50,13 +50,13 @@ intermediaria : string;
   }
   @Input() lastName: string;
 
-  ngOnChanges(changes: SimpleChange){
+  /*ngOnChanges(changes: SimpleChange){
     if (changes && changes.lastName && changes.lastName.currentValue){
       console.log("On changes", changes.lastName.currentValue);
       const aux = 'AAAAAAAAAAAAAA ' + changes.lastName.currentValue;
-      this.lastName = aux; 
+      this.lastName = aux;
     }
-  }
+  }*/
 
   ngDoCheck(){
     //console.log("DoCheck")

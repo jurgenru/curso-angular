@@ -4,7 +4,7 @@
 <!--ngif false-->
 <button (click) = "sw = false;">ChangeSW</button>
 <!--<app-test name="jurgen"></app-test>
-<app-test 
+<app-test
 [name] = "name"
 age = "22"
 description = "buen chango"
@@ -34,7 +34,7 @@ description = "buen chango"
   persona
 </div>-->
 
-<!--ngStyle 
+<!--ngStyle
 Este ejemplo es de el style de como se pondria un color ya definido y no que vaya cambiando como con aux color '1px solid red'-->
 <button (click)="auxColor = 'yellow'">amarillo</button>
 <button (click)="auxColor = 'green'">verde</button>
@@ -153,9 +153,8 @@ Directives
 EXAMEN
 Pedidos ya
 
-<p>Total: {{totalStock}}</p>
 <div *ngFor="let restaurant of restaurants">
-  <div [ngStyle]="{'background':restaurant.stock > 0 ? 'orange' : 'red'}" >   
+  <div [ngStyle]="{'background':restaurant.stock > 0 ? 'orange' : 'red'}" >
     <persona
     [nombre] = "restaurant.nombre"
     [stock] = "restaurant.stock"
