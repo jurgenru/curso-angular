@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './comida.component.html',
   styleUrls: ['./comida.component.css']
 })
-export class ComidaComponent implements OnInit {
+export class ComidaComponent{
 
   @Input() name : string;
   @Input() lastName : string;
