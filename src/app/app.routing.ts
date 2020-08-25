@@ -7,7 +7,8 @@ import {Home1Component} from './components/home1/home1.component';
 import {Home2Component} from './components/home2/home2.component';*/
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // el de abajo es para que por defecto este el home
+  // {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path : 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)},
   {path : 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)},
   {path : 'list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule)}
