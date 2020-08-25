@@ -1,9 +1,22 @@
 <p>Componentes y Routing</p>
 <!--botones para no cambiar el path en el buscador y poniendo el enter-->
+<button type="button" class="btn btn-danger">Danger</button>
 <button routerLink="home">HOME</button>
 <button routerLink="admin">ADMIN</button>
 <button routerLink="about">ABOUT</button>
 <button routerLink="userr">USERR</button>
+
+<div class="btn-group btn-group-toggle">
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton > Left (pre-checked)
+  </label>
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton > Middle
+  </label>
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton> Right
+  </label>
+</div>
 
 <div style="border: 1px solid red">
   <router-outlet>
