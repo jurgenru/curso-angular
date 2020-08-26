@@ -7,11 +7,12 @@ import {Home1Component} from './components/home1/home1.component';
 import {Home2Component} from './components/home2/home2.component';*/
 
 const routes: Routes = [
-  // el de abajo es para que por defecto este el home
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
+];
+// el de abajo es para que por defecto este el home
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path : 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)},
-  {path : 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)},
-  {path : 'list', loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule)}
   /*{
     path: 'home',
     component: HomeComponent,
@@ -23,7 +24,6 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'userr', loadChildren: () => import('./modules/userr/userr.module').then(m => m.UserrModule)}*/
-];
 
 /**forChild son rutas niños se colocan cuando de un padre salen sus niños subrutas de una vista
  forRoot es a nuestra aplicaion principal la ruta raiz**/
