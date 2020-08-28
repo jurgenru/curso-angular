@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { from, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +12,16 @@ export class AppComponent implements OnInit {
 
   sw = true;
 
-  personas = ['pablo', 'juan', 'maria'];
+  /*personas = ['pablo', 'juan', 'maria'];*/
 
   aux = 2;
 
   auxColor = 'red';
 
-  auxClass = true;
+  /*auxClass = true;*/
 
-  auxNumber: number;
-  auxExponent: number;
+  /*auxNumber: number;
+  auxExponent: number;*/
 
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -57,26 +56,27 @@ export class AppComponent implements OnInit {
 
   restaurants = [
   {
-    nombre : 'khao soi', stock:1, precio : 20, tipo : 'internacional'},
+    nombre : 'khao soi', stock: 1, precio : 20, tipo : 'internacional'},
   {
-  nombre : "sajta ", stock: 2, precio : 42, tipo : "nacional"},
+  nombre : 'sajta ', stock: 2, precio : 42, tipo : 'nacional'},
   {
-  nombre : "semla ", stock: 0, precio : 52, tipo : "internacional"},
+  nombre : 'semla ', stock: 0, precio : 52, tipo : 'internacional'},
   {
-  nombre : "silpancho", stock: 45, precio : 5, tipo : "nacional"},
+  nombre : 'silpancho', stock: 45, precio : 5, tipo : 'nacional'},
   {
-  nombre : "pulao", stock: 20, precio : 41, tipo : "internacional"},
+  nombre : 'pulao', stock: 20, precio : 41, tipo : 'internacional'},
   {
-  nombre : "saice ", stock: 1, precio : 7, tipo : "nacional"},
+  nombre : 'saice ', stock: 1, precio : 7, tipo : 'nacional'},
   {
-  nombre : "poutine", stock: 4, precio : 10, tipo : "internacional"},
+  nombre : 'poutine', stock: 4, precio : 10, tipo : 'internacional'},
   {
-  nombre : "chicharron", stock: 0, precio : 4, tipo : "nacional"},
+  nombre : 'chicharron', stock: 0, precio : 4, tipo : 'nacional'},
   {
-  nombre : "fricase ", stock: 33, precio : 47, tipo : "nacional"},
+  nombre : 'fricase ', stock: 33, precio : 47, tipo : 'nacional'},
   {
-  nombre : "sushi", stock: 75, precio : 5, tipo : "internacional"},
-  ]
+  nombre : 'sushi', stock: 75, precio : 5, tipo : 'internacional'},
+  ];
+
   ngOnInit(){
     /*
     funcion flecha o arrow function
@@ -111,6 +111,7 @@ export class AppComponent implements OnInit {
 
     console.log('sort: ', aux.sort())
 
+    // tslint:disable-next-line:max-line-length
     operador spread se puede recorrer un array sin hacer elementos por elemento y es como si copiara el otro array y le aumenta lo que nosotros le digamos.
 
     const aux1 = [100, 21, ... aux];
@@ -174,21 +175,21 @@ export class AppComponent implements OnInit {
   /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*/
 
   // tslint:disable-next-line:typedef
-  //pura(a: number, b: number){
+  // pura(a: number, b: number){
   //  return a + b;
-  //}
+  // }
 
   /*Funcion IMPURA no podemos saber la salida exacta que va a tener y no podemos saber que va a devolver cual va a ser su salida, no se puede predecir la salida porque existe algo adentro que no se sabe que va adevolver*/
-  //impura(a: number, b: number){
+  // impura(a: number, b: number){
   //  return a + b + Math.random();
-  //}
+  // }
 
   /*Esto es para lo de los nombres*/
-  //clickSaveChild(event){
+  // clickSaveChild(event){
   //  console.log('EVENT CHILD: ', event);
-  //}
+  // }
 
-  //changesName(){
-    //this.name = 'maria';
-  //}
+  // changesName(){
+    // this.name = 'maria';
+  // }
 }
