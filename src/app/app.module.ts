@@ -23,9 +23,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSliderModule,
     MatIconModule
   ],
-  providers: [
-
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
