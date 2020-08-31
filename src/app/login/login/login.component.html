@@ -1,9 +1,31 @@
 <p>login works!</p>
 
+<!--Primer ejemplo de forms con plantilla sacando directo del ts-->
+<!--<div style="display: flex; flex-direction: column;">
+  <input type="text" [(ngModel)]="username">
+  <input type="password" [(ngModel)]="password">
+</div>
+<button (click)="onLogin()">LOGIN</button>-->
+
+<!--Segundo ejemplo de forms utilizando los datos de el formulario-->
+<!--<div style="display: flex; flex-direction: column;">
+  <form #form = "ngForm">
+    <input type="text" name="username" ngModel>
+    <input type="password" name="password" ngModel>
+  </form>
+</div>
+<button (click)="onLogin2(form)">LOGIN 2</button>-->
+
+<!--Tercer ejemlo utilizando el boton de ngsubmit-->
+<div style="display: flex; flex-direction: column;">
+  <form (ngSubmit)="onLogin2(form)" #form="ngForm">
+    <input type="text" name="username" ngModel>
+    <input type="password" name="password" ngModel>
+    <button type="submit">ENVIAR</button>
+  </form>
+</div>
 
 <button routerLink="/pages">LOGIN</button>
-
-
 <button (click)="sw = !sw">SW</button>
 <p>{{sw}}</p>
 <p *ngElse="sw">El valor es falso</p>
