@@ -6,8 +6,17 @@
 <button (click)="onEnviar()">Enviar</button>-->
 
 <!--Ejemplo 2-->
-<form [formGroup] = productForm style="display: flex; flex-direction: column">
+<form [formGroup]=productForm style="display: flex; flex-direction: column">
   <input formControlName="description" type="text">
+  <div *ngIf="productForm.get('description').invalid &&
+  (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
+    <div *ngIf="productForm.get('description').errors.required">
+      Name is required
+    </div>
+    <div *ngIf="productForm.get('description').errors.minlength">
+      Name must be at least 3 characters
+    </div>
+  </div>
   <input formControlName="imageURL" type="text">
   <input formControlName="ownerId" type="text">
   <input formControlName="price" type="text">

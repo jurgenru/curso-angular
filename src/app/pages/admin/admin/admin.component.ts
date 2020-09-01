@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      description: '',
+      description: ['', [Validators.required, Validators.minLength(3)]],
       imageURL: '',
       ownerId: '',
       price: '',

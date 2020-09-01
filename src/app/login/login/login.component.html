@@ -26,21 +26,19 @@
 </div>-->
 
 <!--Validation con templates-->
-
-<label>
-  <input class="form-control" type="text" required minlength="3" maxlength="5" ngModel #name="ngModel">
-  <div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger">
-    <div *ngIf="name.errors.required">
-      Name is required
-    </div>
-    <div *ngIf="name.errors.minlength">
-      Name must be at least 3 characters
-    </div>
-    <div *ngIf="name.errors.maxlength">
-      Name must be less than 5 characters
-    </div>
+<input class="form-control" type="text" required minlength="3" maxlength="5" ngModel #name="ngModel">
+<div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger">
+  <!--con un componente se puede evitar escribir la mayoria de lo de abajo y escribiria solo el nombre y listo-->
+  <div *ngIf="name.errors.required">
+    Name is required
   </div>
-</label>
+  <div *ngIf="name.errors.minlength">
+    Name must be at least 3 characters
+  </div>
+  <div *ngIf="name.errors.maxlength">
+    Name must be less than 5 characters
+  </div>
+</div>
 
 <!--<button routerLink="/pages">LOGIN</button>
 <button (click)="sw = !sw">SW</button>
