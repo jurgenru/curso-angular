@@ -17,13 +17,30 @@
 <button (click)="onLogin2(form)">LOGIN 2</button>-->
 
 <!--Tercer ejemlo utilizando el boton de ngsubmit-->
-<div style="display: flex; flex-direction: column;">
+<!--<div style="display: flex; flex-direction: column;">
   <form (ngSubmit)="onLogin2(form)" #form="ngForm">
     <input type="text" name="username" ngModel>
     <input type="password" name="password" ngModel>
     <button type="submit">ENVIAR</button>
   </form>
-</div>
+</div>-->
+
+<!--Validation con templates-->
+
+<label>
+  <input class="form-control" type="text" required minlength="3" maxlength="5" ngModel #name="ngModel">
+  <div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger">
+    <div *ngIf="name.errors.required">
+      Name is required
+    </div>
+    <div *ngIf="name.errors.minlength">
+      Name must be at least 3 characters
+    </div>
+    <div *ngIf="name.errors.maxlength">
+      Name must be less than 5 characters
+    </div>
+  </div>
+</label>
 
 <!--<button routerLink="/pages">LOGIN</button>
 <button (click)="sw = !sw">SW</button>
