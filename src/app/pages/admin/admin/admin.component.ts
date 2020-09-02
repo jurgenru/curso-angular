@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {ProductService} from '../../../services/product.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -8,10 +10,14 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
 
+  productSubs: Subscription;
+
   productForm: FormGroup;
+
   // nameControl: new FormControl();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private productService: ProductService) {
+  }
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -23,12 +29,24 @@ export class AdminComponent implements OnInit {
     });
   }
 
-/*  onEnviar(): void{
-    console.log('VALOR: ', this.nameControl.value);
-  }*/
+  /*  onEnviar(): void{
+      console.log('VALOR: ', this.nameControl.value);
+    }*/
 
-  onEnviar2(): void{
+  onEnviar2(): void {
     console.log('Form Group: ', this.productForm.value);
+
+    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
+      res => {
+        console.log('Resp: ', res);
+      },
+      error => {
+        console.log('ERROR DE SERVIDOR');
+      }
+    );
   }
 
+  ngOnDestroy(): void{
+    this.productSubs ? this.productSubs.unsubscribe() : '';
+  }
 }

@@ -12,4 +12,7 @@ export class ProductService {
   public getProducts(): Observable<any> {
     return this.http.get('https://angularcoursee.firebaseio.com/products.json');
   }
+  public addProduct(product: any): Observable<any> {
+    return this.http.post('https://angularcoursee.firebaseio.com/products.json', product);
+  }
 }
