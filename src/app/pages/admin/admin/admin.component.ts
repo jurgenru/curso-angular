@@ -9,14 +9,22 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  products = [];
 
   productSubs: Subscription;
+  productGetSubs: Subscription;
 
   productForm: FormGroup;
 
   // nameControl: new FormControl();
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) {
+    this.productGetSubs = this.productService.getProducts().subscribe(res => {
+      console.log('Respuesta: ', res);
+      console.log('Respuesta: ', Object.entries(res));
+
+      Object.entries(res).map(p => this.products.push(p[1]));
+    });
   }
 
   ngOnInit(): void {
