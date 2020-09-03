@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
   products = [];
 
   productSubs: Subscription;
@@ -19,15 +19,10 @@ export class AdminComponent implements OnInit {
   // nameControl: new FormControl();
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) {
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
-      console.log('Respuesta: ', res);
-      console.log('Respuesta: ', Object.entries(res));
-
-      Object.entries(res).map(p => this.products.push(p[1]));
-    });
   }
 
   ngOnInit(): void {
+    this.loadProduct();
     this.productForm = this.formBuilder.group({
       description: ['', [Validators.required, Validators.minLength(3)]],
       imageURL: '',
@@ -37,6 +32,15 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  loadProduct(): void{
+    this.products = [];
+    this.productGetSubs = this.productService.getProducts().subscribe(res => {
+      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+      /*console.log('Respuesta: ', res);
+      console.log('Respuesta: ', Object.entries(res));
+*/
+    });
+  }
   /*  onEnviar(): void{
       console.log('VALOR: ', this.nameControl.value);
     }*/
@@ -54,7 +58,20 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  onDelete(id: any): void{
+    this.productService.deleteProduct(id).subscribe(
+      res => {
+        console.log('Resp: ', res);
+        this.loadProduct();
+      },
+      err => {
+        console.log('ERROR: ');
+      }
+    );
+  }
+
   ngOnDestroy(): void{
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
   }
 }
