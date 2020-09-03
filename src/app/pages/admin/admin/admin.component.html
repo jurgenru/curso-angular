@@ -2,10 +2,17 @@
 
   <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
 
-    <form [formGroup]=productForm style="display: flex; flex-direction: column">
-      <input formControlName="description" type="text">
+    <form [formGroup]="productForm" style="display: flex; flex-direction: column">
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" type="text">
+      </mat-form-field>
+
       <div *ngIf="productForm.get('description').invalid &&
-  (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
+                  (productForm.get('description').touched ||
+                   productForm.get('description').dirty)"
+           class="alert alert-danger">
         <div *ngIf="productForm.get('description').errors.required">
           Name is required
         </div>
@@ -13,24 +20,39 @@
           Name must be at least 3 characters
         </div>
       </div>
-      <input formControlName="imageURL" type="text">
-      <input formControlName="ownerId" type="text">
-      <input formControlName="price" type="text">
-      <input formControlName="title" type="text">
-    </form>
 
-    <button (click)="onEnviar2()">Enviar</button>
+      <mat-form-field>
+        <mat-label>Image URL</mat-label>
+        <input matInput formControlName="imageUrl" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Owner ID</mat-label>
+        <input matInput formControlName="ownerId" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" type="text">
+      </mat-form-field>
+
+    </form>
+    <button (click)="onEnviar2()">Create</button>
+    <button (click)="onUpdateProduct()">Update</button>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
+    <button type="button" mat-button (click)="onEnviar2(); drawer.toggle()">
+      Create
     </button>
   </div>
 
-  <div class = "row">
+  <div class="row">
 
-    <div *ngFor="let product of products" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
+    <div *ngFor="let product of products" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+         style="padding: 50px; display: flex; justify-content: center;">
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{product.title}}</mat-card-title>
@@ -43,7 +65,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>Edit</button>
+          <button mat-button (click)="onEdit(product); drawer.toggle()">Edit</button>
           <button mat-button (click)="onDelete(product.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
