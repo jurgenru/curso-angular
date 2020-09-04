@@ -19,7 +19,6 @@ import { ProviderModule } from './MODULESEX/ProviderModule/provider/provider.mod
     DishModule,
     ProviderModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
