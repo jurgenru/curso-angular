@@ -50,7 +50,7 @@
       </button>
     </div>
   
-    <h2 style="background: b; padding: 10px;"> NACIONAL </h2>
+    <h2 style="background: blue; padding: 10px;"> NACIONAL </h2>
     
     <div class="row">
         <div *ngFor="let concert of nacional">
@@ -61,9 +61,8 @@
                   </mat-card-header>
                   <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
                   <mat-card-content>
-                      <p> <strong> Tipo: </strong> {{concert.type | titlecase}} </p>
-                      <p> <strong> Habilitado:                        
-                        </strong>{{concert.enable | enable }} </p>
+                      <p> Tipo: {{concert.type | uppercase}}  </p>
+                      <p> Habilitado: {{concert.enable | enable }} </p>
                   </mat-card-content>
                   <mat-card-actions>
                       <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
@@ -84,8 +83,8 @@
                   </mat-card-header>
                   <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
                   <mat-card-content>
-                      <p> <strong> Tipo: </strong> {{concert.type | titlecase}} </p>
-                      <p> <strong> Habilitado: </strong> {{concert.enable | enable}} </p>
+                      <p> Tipo: {{concert.type}} </p>
+                      <p> Habilitado:  {{concert.enable | enable}} </p>
                       
                   </mat-card-content>
                   <mat-card-actions>
