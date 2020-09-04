@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }*/
 
   onLogin2(form): void{
-    console.log('Variables: ', form.value);
+//    console.log('Variables: ', form.value);
     this.router.navigate(['/pages']);
   }
 }
