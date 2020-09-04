@@ -10,10 +10,7 @@ import { ConcertService } from '../../services/concert.service';
 })
 export class ConcertComponent implements OnInit, OnDestroy {
 
- constructor(private formBuilder: FormBuilder,
-    private concertService: ConcertService) { }
-
-  concertForm : FormGroup;
+   concertForm : FormGroup;
   concerts = [];
 
   nacional = [];
@@ -24,6 +21,9 @@ export class ConcertComponent implements OnInit, OnDestroy {
   conDelete: Subscription;
   conAdd: Subscription;
   conUpdate: Subscription;
+
+ constructor(private formBuilder: FormBuilder,
+    private concertService: ConcertService) { }
 
   ngOnInit() {
     this.loadConcerts();

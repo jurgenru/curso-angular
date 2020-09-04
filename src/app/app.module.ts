@@ -15,16 +15,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-    import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { HabilitadoPipe } from './habilitado.pipe';
+import { EnablePipe } from './enable.pipe';
 
 
 @NgModule({
   declarations: [
    AppComponent,
    ConcertComponent,
-   HabilitadoPipe
+   EnablePipe
    ],
   imports: [
     BrowserModule,

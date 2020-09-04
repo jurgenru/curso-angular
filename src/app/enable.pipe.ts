@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'habilitado'
+  name: 'enable'
 })
-export class HabilitadoPipe implements PipeTransform {
+export class EnablePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value === "true") {

@@ -1,7 +1,5 @@
 <mat-drawer-container autosize>
     <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
-        <h2> CREAR CONCIERTO </h2>
-        <h2> EDITAR CONCIERTO </h2>
         <form [formGroup]="concertForm" style="display: flex; flex-direction: column; width: 90%;">
             <mat-form-field appearance="legacy">
               <mat-label>Enable</mat-label>
@@ -17,7 +15,7 @@
                     Name is a required field
                 </div>
                 <div *ngIf="concertForm.get('name').errors.minlength">
-                    3 characters minimum
+                    3 characters at least
                 </div>
             </div>
 
@@ -52,7 +50,7 @@
       </button>
     </div>
   
-    <h2 style="background: lightBlue; padding: 10px;"> NACIONAL </h2>
+    <h2 style="background: b; padding: 10px;"> NACIONAL </h2>
     
     <div class="row">
         <div *ngFor="let concert of nacional">
@@ -64,7 +62,8 @@
                   <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
                   <mat-card-content>
                       <p> <strong> Tipo: </strong> {{concert.type | titlecase}} </p>
-                      <p> <strong> Habilitado: </strong>{{concert.enable | habilitado }} </p>
+                      <p> <strong> Habilitado:                        
+                        </strong>{{concert.enable | enable }} </p>
                   </mat-card-content>
                   <mat-card-actions>
                       <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
@@ -74,7 +73,7 @@
         </div>
     </div>
 
-    <h2 style="background: lightBlue; padding: 10px;"> INTERNACIONAL </h2>
+    <h2 style="background: blue; padding: 10px;"> INTERNACIONAL </h2>
     
     <div class="row">
         <div *ngFor="let concert of internacional" >
@@ -86,7 +85,7 @@
                   <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
                   <mat-card-content>
                       <p> <strong> Tipo: </strong> {{concert.type | titlecase}} </p>
-                      <p> <strong> Habilitado: </strong> {{concert.enable | habilitado}} </p>
+                      <p> <strong> Habilitado: </strong> {{concert.enable | enable}} </p>
                       
                   </mat-card-content>
                   <mat-card-actions>
