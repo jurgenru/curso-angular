@@ -10,80 +10,82 @@ import { ConcertService } from '../../services/concert.service';
 })
 export class ConcertComponent implements OnInit, OnDestroy {
 
-  products = [];
+ constructor(private formBuilder: FormBuilder,
+    private concertService: ConcertService) { }
 
-  productForm: FormGroup;
+  concertForm : FormGroup;
+  concerts = [];
 
-  productSubs: Subscription;
-  productGetSubs: Subscription;
-  productDeleteSubs: Subscription;
-  productUpdateSubs: Subscription;
-  idEdit: any;
+  nacional = [];
+  internacional = [];
 
-  constructor(private formBuilder: FormBuilder, private productService: ConcertService) {
-  }
+  idEdit:string;
+  conCreate: Subscription;
+  conDelete: Subscription;
+  conAdd: Subscription;
+  conUpdate: Subscription;
 
-  ngOnInit(): void {
-    this.loadProduct();
-    this.productForm = this.formBuilder.group({
-      name: ['', [Validators.minLength(3)]],
-      stock: '',
-      enable: ['',[Validators.required]],
-      imageUrl: '',
+  ngOnInit() {
+    this.loadConcerts();
+    this.concertForm = this.formBuilder.group({
+      enable:null,
+      name:['',[Validators.required, Validators.minLength(3)]],
+      stock:'',
+      type: ['',[Validators.required]],
+      urlImage:''
     });
   }
 
-  loadProduct(): void{
-    this.products = [];
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
-      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+  
+  loadConcerts(): void {
+    this.concerts = [];
+    this.conCreate = this.concertService.getConcerts().subscribe(res => {
+      Object.entries(res).map((c:any) => this.concerts.push({id: c[0], ...c[1]}));
+      this.nacional = this.concerts.filter(s => s.type === 'nacional');
+      this.internacional = this.concerts.filter(s => s.type === 'internacional');
+
+    })
+  }
+
+  onDelete(id: any) :void{
+    this.conDelete = this.concertService.deleteConcert(id).subscribe(res => {
+      this.loadConcerts();
     });
   }
 
-  onEnviar2(): void {
-    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
-      res => {
-        console.log('Resp: ', res);
+  onAdd():void{
+    this.conAdd = this.concertService.addConcert(this.concertForm.value).subscribe(res => {
+      this.loadConcerts();
       },
-      error => {
+      err => {
         console.log('ERROR DE SERVIDOR');
       }
     );
   }
 
-  onDelete(id: any): void{
-    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
-      res => {
-        console.log('Resp: ', res);
-        this.loadProduct();
+  onUpdate():void{
+    this.conUpdate = this.concertService.updateProducts(this.idEdit, this.concertForm.value).subscribe(res => {
+      this.loadConcerts();
       },
       err => {
-        console.log('ERROR: ');
+        console.log('ERROR DE SERVIDOR');
       }
     );
   }
 
-  onEdit(product): void{
-    this.idEdit = product.id;
-    this.productForm.patchValue(product);
+  onEdit(concert):void {
+    this.concertForm.patchValue({
+
+      enable: concert.enable,
+      name: concert.name,
+      stock: concert.stock,
+      type: concert.type,
+      urlImage: concert.urlImage
+
+    });
+
+    this.idEdit = concert.id;
+
   }
 
-  onUpdateProduct(): void{
-    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productForm.value).subscribe(
-      res => {
-        console.log('Resp Update: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR UPDATE');
-      }
-    );
-  }
-
-  ngOnDestroy(): void{
-    this.productSubs ? this.productSubs.unsubscribe() : '';
-    this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
-    this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
-    this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
-  }
 }
