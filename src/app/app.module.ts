@@ -8,7 +8,6 @@ import { ComidaComponent } from './modules/comida/components/comida/comida.compo
 import { DishModule } from './MODULESEX/DishModule/dish/dish.module';
 import { ProviderModule } from './MODULESEX/ProviderModule/provider/provider.module';
 
-
 @NgModule({
   declarations: [
    AppComponent,
