@@ -11,11 +11,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRouting } from './app-routing.component';
+import { ConcertRoutingComponent } from './concert-routing/concert-routing.component';
 
 
 @NgModule({
   declarations: [
-   AppComponent
+   AppComponent,
+   ConcertRoutingComponent
   ],
   imports: [
     BrowserModule,
