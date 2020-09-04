@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { ConcertService } from '../../../../services/concert.service';
 
 @Component({
-  selector: 'comida',
-  templateUrl: './comida.component.html',
-  styleUrls: ['./comida.component.css']
+  selector: 'concert',
+  templateUrl: './concert.component.html',
+  styleUrls: ['./concert.component.css']
 })
 export class ConcertComponent implements OnInit, OnDestroy{
   concert = [];

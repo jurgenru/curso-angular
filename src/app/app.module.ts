@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
+import { AppRouting } from './app-routing.component';
+
 
 @NgModule({
   declarations: [
@@ -19,11 +21,11 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     DishModule,
     ProviderModule,
-    BrowserAnimationsModule,
     FormsModule,
     NgbModule,
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
+    AppRouting
   ],
   bootstrap: [AppComponent]
 })
