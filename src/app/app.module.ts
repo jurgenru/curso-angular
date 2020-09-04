@@ -10,15 +10,15 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
-import { AppRouting } from './app-routing.component';
-import { ConcertRoutingComponent } from './concert-routing/concert-routing.component';
+import { AppRouting } from './app-routing.module';
+import { ConcertComponent } from './concert/concert/concert.component';
 
 
 @NgModule({
   declarations: [
    AppComponent,
-   ConcertRoutingComponent
-  ],
+   ConcertComponent
+   ],
   imports: [
     BrowserModule,
     DishModule,
