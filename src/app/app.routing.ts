@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
 ];
 // el de abajo es para que por defecto este el home
-  // {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // {path: '', redirectTo: 'home', pathMatch: 'full'}()()
   /*{
     path: 'home',
     component: HomeComponent,
