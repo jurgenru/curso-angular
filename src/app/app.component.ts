@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent implements OnInit {
   title = 'curso-angular';
@@ -29,58 +30,68 @@ export class AppComponent implements OnInit {
 
   persons = [
     {
-      name : 'asdsad',
-      lastName : 'jurge',
-      age : 21,
-      enable : true
+      name: 'asdsad',
+      lastName: 'jurge',
+      age: 21,
+      enable: true
     },
     {
-      name : 'andres',
-      lastName : 'andres',
-      age : 21,
-      enable : false
+      name: 'andres',
+      lastName: 'andres',
+      age: 21,
+      enable: false
     },
     {
-      name : 'felipe',
-      lastName : 'felipe',
-      age : 21,
-      enable : true
+      name: 'felipe',
+      lastName: 'felipe',
+      age: 21,
+      enable: true
     },
     {
-      name : 'maria',
-      lastName : 'maria',
-      age : 21,
-      enable : false
+      name: 'maria',
+      lastName: 'maria',
+      age: 21,
+      enable: false
     }
   ];
 
   restaurants = [
-  {
-    nombre : 'khao soi', stock: 1, precio : 20, tipo : 'internacional'},
-  {
-  nombre : 'sajta ', stock: 2, precio : 42, tipo : 'nacional'},
-  {
-  nombre : 'semla ', stock: 0, precio : 52, tipo : 'internacional'},
-  {
-  nombre : 'silpancho', stock: 45, precio : 5, tipo : 'nacional'},
-  {
-  nombre : 'pulao', stock: 20, precio : 41, tipo : 'internacional'},
-  {
-  nombre : 'saice ', stock: 1, precio : 7, tipo : 'nacional'},
-  {
-  nombre : 'poutine', stock: 4, precio : 10, tipo : 'internacional'},
-  {
-  nombre : 'chicharron', stock: 0, precio : 4, tipo : 'nacional'},
-  {
-  nombre : 'fricase ', stock: 33, precio : 47, tipo : 'nacional'},
-  {
-  nombre : 'sushi', stock: 75, precio : 5, tipo : 'internacional'},
+    {
+      nombre: 'khao soi', stock: 1, precio: 20, tipo: 'internacional'
+    },
+    {
+      nombre: 'sajta ', stock: 2, precio: 42, tipo: 'nacional'
+    },
+    {
+      nombre: 'semla ', stock: 0, precio: 52, tipo: 'internacional'
+    },
+    {
+      nombre: 'silpancho', stock: 45, precio: 5, tipo: 'nacional'
+    },
+    {
+      nombre: 'pulao', stock: 20, precio: 41, tipo: 'internacional'
+    },
+    {
+      nombre: 'saice ', stock: 1, precio: 7, tipo: 'nacional'
+    },
+    {
+      nombre: 'poutine', stock: 4, precio: 10, tipo: 'internacional'
+    },
+    {
+      nombre: 'chicharron', stock: 0, precio: 4, tipo: 'nacional'
+    },
+    {
+      nombre: 'fricase ', stock: 33, precio: 47, tipo: 'nacional'
+    },
+    {
+      nombre: 'sushi', stock: 75, precio: 5, tipo: 'internacional'
+    },
   ];
 
-  ngOnInit(){
-    /*
-    funcion flecha o arrow function
-    si no ponemos parametros solo se ponen los (), si ponemos tenemos que poner todo lo necesario
+  ngOnInit() {
+
+    /*funcion flecha o arrow function
+    si no ponemos parametros solo se ponen los (), si ponemos tenemos que poner all lo necesario
     () => 'hola' es igual que la funcion de abajo
 
     function hola(){
@@ -92,7 +103,7 @@ export class AppComponent implements OnInit {
       return b
     )
 
-    funcion finding index su nombre dice todo
+    funcion finding index su nombre dice all (en español ;))
 
     const aux = [1,2,3,4,5,6]
 
@@ -102,8 +113,9 @@ export class AppComponent implements OnInit {
     const par = aux.filter(s => s%2 === 0);
     console.log('pares: ',par) aqui nos devuelve los pares de nuestro array aux
 
-    operador map (recorre el array y nos devuelve otro)
+    operador map (recorre el array y nos devuelve otro)*/
 
+/*
     const mult = aux.map(s => s*2)
     console.log('map: ',mult) nos devuelve cada uno de aux multiplicado por 2
 
@@ -111,9 +123,10 @@ export class AppComponent implements OnInit {
 
     console.log('sort: ', aux.sort())
 
-    // tslint:disable-next-line:max-line-length
     operador spread se puede recorrer un array sin hacer elementos por elemento y es como si copiara el otro array y le aumenta lo que nosotros le digamos.
+*/
 
+/*
     const aux1 = [100, 21, ... aux];
     console.log('spread: ', aux1)
 
@@ -121,8 +134,9 @@ export class AppComponent implements OnInit {
       name: 'jurgen',
       lastname: 'ruegenberg'
     };
+*/
 
-    const aux3 = [address: 'irpavi 2', ...aux2]
+    /*const aux3 = [address: 'irpavi 2', ...aux2]
     console.log('spread1: ', aux3)
 
     operador destructuring desustructura alguna estructura que tengamos ya sea en json y asiganarla a variables
@@ -145,9 +159,9 @@ export class AppComponent implements OnInit {
     data = persona.data;
     address = persona.address;
 
-    variables let trabajan en el contexto donde se lo define
+    variables let trabajan en el contexto donde se lo define*/
 
-    for(let i = 0; i < aux.length; i++){
+    /*for(let i = 0; i < aux.length; i++){
       console.log('a', i)
     }
 
@@ -162,22 +176,24 @@ export class AppComponent implements OnInit {
     2 > 1 ? 'si' : 'no';
 
     const array = from([1,2,3,4,5,6]);
-    array.subscribe(s => console.log('item:', s))
+    array.subscribe(s => console.log('item:', s))*/
 
-    const aux = fromEvent(document, 'mousemove');
-
-    //aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
+    /*
+        const aux = fromEvent(document, 'mousemove');
     */
-  //  console.log('PURA: ', this.pura(6, 2));
-  //  console.log('IMPURA: ', this.impura(6, 2));
+
+    /*aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
+*/
+    //  console.log('PURA: ', this.pura(6, 2));
+    //  console.log('IMPURA: ', this.impura(6, 2));
   }
 
-  /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*/
+  /*Funcion PURA es porque la entrada tiene que ser la misma que la salida y viceversa. tiene una salida unica dependiendo de sus entradas no puede ser diferente*!/
 
-  // tslint:disable-next-line:typedef
-  // pura(a: number, b: number){
-  //  return a + b;
-  // }
+   tslint:disable-next-line:typedef
+   pura(a: number, b: number){
+    return a + b;
+   }*/
 
   /*Funcion IMPURA no podemos saber la salida exacta que va a tener y no podemos saber que va a devolver cual va a ser su salida, no se puede predecir la salida porque existe algo adentro que no se sabe que va adevolver*/
   // impura(a: number, b: number){
@@ -190,6 +206,6 @@ export class AppComponent implements OnInit {
   // }
 
   // changesName(){
-    // this.name = 'maria';
+  // this.name = 'maria';
   // }
 }
