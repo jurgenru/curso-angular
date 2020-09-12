@@ -20,7 +20,6 @@ import {MatInputModule} from '@angular/material/input';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatSidenavModule,
     MatCardModule,
     MatButtonModule,

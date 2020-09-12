@@ -16,8 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
     HomeRoutingModule,
 
     MatCardModule,
-    MatButtonModule,
-    HttpClientModule
+    MatButtonModule
   ],
   providers: [
     ProductService
