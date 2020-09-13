@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
 import {Subscription} from 'rxjs';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -20,7 +21,9 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   // nameControl: new FormControl();
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductService) {
+  constructor(private formBuilder: FormBuilder,
+              private productService: ProductService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -36,7 +39,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   loadProduct(): void {
     this.products = [];
-    const userId = localStorage.getItem('userId');
+    const userId = this.authService.getUserId();
     this.productGetSubs = this.productService.getProductsById(userId).subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       /*console.log('Respuesta: ', res);
@@ -52,7 +55,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   onEnviar2(): void {
     this.productSubs = this.productService.addProduct({
       ...this.productForm.value,
-      ownerId: localStorage.getItem('userId')
+      ownerId: this.authService.getUserId()
     }).subscribe(
       res => {
         console.log('Resp: ', res);
@@ -86,7 +89,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.idEdit,
       {
         ...this.productForm.value,
-        ownerId: localStorage.getItem('userId')
+        ownerId: this.authService.getUserId()
       }
     ).subscribe(
       res => {
