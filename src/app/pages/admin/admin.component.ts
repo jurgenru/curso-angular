@@ -34,21 +34,26 @@ export class AdminComponent implements OnInit, OnDestroy {
     });
   }
 
-  loadProduct(): void{
+  loadProduct(): void {
     this.products = [];
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
+    const userId = localStorage.getItem('userId');
+    this.productGetSubs = this.productService.getProductsById(userId).subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       /*console.log('Respuesta: ', res);
       console.log('Respuesta: ', Object.entries(res));
 */
     });
   }
+
   /*  onEnviar(): void{
       console.log('VALOR: ', this.nameControl.value);
     }*/
 
   onEnviar2(): void {
-    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
+    this.productSubs = this.productService.addProduct({
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }).subscribe(
       res => {
         console.log('Resp: ', res);
         this.loadProduct();
@@ -59,7 +64,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
-  onDelete(id: any): void{
+  onDelete(id: any): void {
     this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
       res => {
         console.log('Resp: ', res);
@@ -71,13 +76,19 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
-  onEdit(product): void{
+  onEdit(product): void {
     this.idEdit = product.id;
     this.productForm.patchValue(product);
   }
 
-  onUpdateProduct(): void{
-    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productForm.value).subscribe(
+  onUpdateProduct(): void {
+    this.productUpdateSubs = this.productService.updateProduct(
+      this.idEdit,
+      {
+        ...this.productForm.value,
+        ownerId: localStorage.getItem('userId')
+      }
+    ).subscribe(
       res => {
         console.log('Resp Update: ', res);
         this.loadProduct();
@@ -88,7 +99,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
     this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
     this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
