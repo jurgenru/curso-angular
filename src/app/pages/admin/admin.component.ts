@@ -42,9 +42,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     const userId = this.authService.getUserId();
     this.productGetSubs = this.productService.getProductsById(userId).subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
-      /*console.log('Respuesta: ', res);
-      console.log('Respuesta: ', Object.entries(res));
-*/
     });
   }
 

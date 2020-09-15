@@ -46,6 +46,6 @@ export class AuthInterceptor implements HttpInterceptor {
   private handle401Error(): Observable<any>{
     this.authService.logout();
     return throwError('Error 401');
-    /*aqui podemos utilizar lo del refreshTOken*/
+    /*aqui podemos utilizar lo del refreshTOken TODO*/
   }
 }
