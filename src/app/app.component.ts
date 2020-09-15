@@ -10,12 +10,12 @@ export class AppComponent implements OnInit {
   title = 'curso-angular';
 
   ngOnInit(){
-      const array = from([1,2,3,4,5,6]);
-      array.subscribe(a => console.log('items: ', a))
+      //const array = from([1,2,3,4,5,6]);
+      //array.subscribe(a => console.log('items: ', a))
  
-      const aux = fromEvent(document, 'mousemove');
+      //const aux = fromEvent(document, 'mousemove');
 
-      aux.subscribe(a => console.log('event: ', a.clientX + ', ' + a.clientY));
+      //aux.subscribe(a => console.log('event: ', a.clientX + ', ' + a.clientY));
   }
 
 }
