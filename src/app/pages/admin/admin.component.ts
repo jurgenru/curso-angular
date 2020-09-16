@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.loadProduct();
     this.productForm = this.formBuilder.group({
       description: ['', [Validators.required, Validators.minLength(3)]],
-      imageURL: '',
+      imageUrl: '',
       ownerId: '',
       price: '',
       title: ''
