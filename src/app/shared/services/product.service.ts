@@ -13,23 +13,19 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  public getProducts(id: any): Observable<any> {
-    return this.http.get(`${this.url}/products.json?auth=${id}`);
+  public getProducts(): Observable<any> {
+    return this.http.get(`${this.url}/products.json`);
   }
-
-  public getProductsById(id: any): Observable<any> {
-    return this.http.get(`${this.url}/products.json?orderBy="ownerId"&equalTo="${id}"&print=pretty`);
-  }
-
-  public addProduct(product: any, id: any): Observable<any> {
-    return this.http.post(`${this.url}/products.json?auth=${id}`, product);
+  
+  public addProduct(product: any): Observable<any> {
+    return this.http.post(`${this.url}/products.json`, product);
   }
 
   public deleteProduct(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/products/${id}.json?auth=${id}`);
+    return this.http.delete(`${this.url}/products/${id}.json`);
   }
 
   public updateProduct(id: any, product: any): Observable<any> {
-    return this.http.put(`${this.url}/products/${id}.json?auth=${id}`, product);
+    return this.http.put(`${this.url}/products/${id}.json`, product);
   }
 }
