@@ -6,8 +6,6 @@ import {map} from 'rxjs/operators';
 import {Router} from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
-})
 export class AuthService {
 
   url = environment.auth.apiBaseUrl;
