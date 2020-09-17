@@ -1,46 +1,45 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ProductService} from '../../shared/services/product.service';
-import {Subscription} from 'rxjs';
-import {Store} from '@ngrx/store';
-import {AddProduct} from './store/home.actions';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ProductService } from '../../shared/services/product.service';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AddProduct } from './store/home.actions'
 
 @Component({
+  selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
-  productSubs: Subscription;
-
-  homeSubs: Subscription;
-
   products = [];
-
   cart = [];
+  productSubs :Subscription;
+  homeSubs: Subscription;
+  constructor(private store: Store<any>,
+    private productService: ProductService) { }
 
-  constructor(public productService: ProductService, private store: Store<any>) {
-
-  }
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.homeSubs = this.store.select(s => s.home).subscribe(res => {
-      this.cart = Object.assign([], res.items);
+      
+      this.cart = Object.assign([],res.items);
+      // Evitar el principio de inmutabilidad que nos devuelve el store
+      // JSON.parse({JSON.stringify(res)})
     });
 
     this.productSubs = this.productService.getProducts().subscribe(res => {
-      console.log('Respuesta: ', res);
-      console.log('Respuesta: ', Object.entries(res));
+      console.log('RS',res)
+      console.log('RESPUESTA', Object.entries(res));
 
       Object.entries(res).map(p => this.products.push(p[1]));
     });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.homeSubs ? this.homeSubs.unsubscribe() : '';
   }
 
-  onComprar(product): void {
-    this.store.dispatch(AddProduct({product: Object.assign({}, product)}));
+  onBuy(product): void {
+    this.store.dispatch(AddProduct({product:Object.assign([],product)}));
   }
 
 }
