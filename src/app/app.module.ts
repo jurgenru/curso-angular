@@ -14,21 +14,17 @@ import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {metaReducers} from './core/meta';
 import {reducers} from './core';
-import { CardComponent } from './card/card.component';
+
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)},
-  {
-    path: 'pages', 
-    loadChildren: () => import('./modul/pages/pages.module').then(m => m.PagesModule),
-    canActivate: [ AuthGuard ]
-  }
+  
+  {path:'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

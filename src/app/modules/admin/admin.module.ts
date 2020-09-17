@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { CardComponent } from './card/card.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -20,7 +21,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminComponent,
-    CardComponent
+    CardComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
