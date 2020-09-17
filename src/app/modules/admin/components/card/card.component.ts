@@ -5,14 +5,16 @@ import { ProductService } from '../../../../shared/services/product.service';
  
  
 @Component({
-  selector: 'app-home',
+  selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class CardComponent implements OnInit, OnDestroy {
  
   products=[];
- 
+
+  calor=[];
+  frio=[];
   productFormm : FormGroup;
   //nameControl = new FormControl();
  
@@ -39,6 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.products = [];
     this.productGetSubs = this.productService.getProducts().subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+      this.frio = this.products.filter(s => s.type === 'frio');
+      this.calor = this.products.filter(s => s.type === 'calor');
     });
   }
  

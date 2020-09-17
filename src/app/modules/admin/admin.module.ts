@@ -10,10 +10,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { CardComponent } from './components/card/card.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { CardComponent } from './components/card/card.component';
+import { TallaPipe } from '../../talla.pipe';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -22,9 +23,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminComponent,
-    CardComponent,
     HeaderComponent,
-    FormComponent
+    FormComponent,
+    CardComponent,
+    TallaPipe
   ],
   imports: [
     CommonModule,
