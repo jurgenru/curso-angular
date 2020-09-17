@@ -17,10 +17,10 @@ import {reducers} from './core';
 import { CardComponent } from './card/card.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)},
   {
     path: 'pages', 
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+    loadChildren: () => import('./modul/pages/pages.module').then(m => m.PagesModule),
     canActivate: [ AuthGuard ]
   }
 ];
