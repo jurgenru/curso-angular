@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
@@ -13,6 +13,7 @@ import { AdminComponent } from './admin.component';
 import { CardComponent } from './components/card/card.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -24,7 +25,6 @@ const routes: Routes = [
     CardComponent,
     HeaderComponent,
     FormComponent
-
   ],
   imports: [
     CommonModule,
@@ -34,13 +34,12 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSliderModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [
     ProductService
   ],
-  exports: [
-    RouterModule
-  ]
 })
 export class AdminModule { }
