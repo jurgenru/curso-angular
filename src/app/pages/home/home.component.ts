@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   productSubs :Subscription;
   homeSubs: Subscription;
   constructor(private store: Store<any>,
-    private productService: ProductService) { }
+    private productService: ProductService, 
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.homeSubs = this.store.select(s => s.home).subscribe(res => {
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       // JSON.parse({JSON.stringify(res)})
     });
 
-    this.productSubs = this.productService.getProducts().subscribe(res => {
+    this.productSubs = this.productService.getProducts(id).subscribe(res => {
       console.log('RS',res)
       console.log('RESPUESTA', Object.entries(res));
 

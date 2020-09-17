@@ -3,13 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   app: {
-    apiBaseUrl: 'https://angularcoursee.firebaseio.com'
+    apiBaseUrl: 'https://amazzon-test.firebaseio.com'
   },
   auth: {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
-    key: 'AIzaSyCFBYXF2bYaZTxX9-lVkSoQ_g_t7MVBEXM'
+    key: 'AIzaSyA27IUPo8DG5PRSd3WTBckqnpjtrU0z-9U'
   }
 };
 
