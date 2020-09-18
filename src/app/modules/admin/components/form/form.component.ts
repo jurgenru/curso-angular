@@ -10,100 +10,104 @@ import { ProductService } from '../../../../shared/services/product.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  products = [];
-
-  productForm: FormGroup;
 
   productSubs: Subscription;
-  productGetSubs: Subscription;
-  productDeleteSubs: Subscription;
-  productUpdateSubs: Subscription;
-  idEdit: any;
+  productSubs2: Subscription;
+  productDelete: Subscription;
+  productUpdate: Subscription;
+  products = [];
+  
+  hot = [];
+  cold = [];
 
-  // nameControl: new FormControl();
+  productForm : FormGroup;
+  idEdit:any;
+  //nameControl = new FormControl();
 
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
-              private authService: AuthService) {
-  }
+              private authService: AuthService ) { }
 
-  ngOnInit(): void {
-    this.loadProduct();
+  ngOnInit() {
+    this.loadProducts();
     this.productForm = this.formBuilder.group({
-      name:['', [Validators.minLength(3)]],
+      name:['',[Validators.required, Validators.minLength(3)]],
       size:'',
       stock:'',
-      type:['',[Validators.required]],
+      type: ['',[Validators.required]],
       urlImage:''
     });
+   
   }
 
-  loadProduct(): void {
+  loadProducts(): void {
     this.products = [];
-    const userId = this.authService.getUserId();
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
+    this.productSubs2 = this.productService.getProducts().subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+      this.hot = this.products.filter(s => s.type === 'calor');
+      this.cold = this.products.filter(s => s.type === 'frio');
+      console.log(this.products);
     });
   }
 
-  /*  onEnviar(): void{
-      console.log('VALOR: ', this.nameControl.value);
-    }*/
+  onDelete(id: any) :void{
+    console.log('ID',id);
+    this.productDelete = this.productService.deleteProduct(id).subscribe(res => {
+      this.loadProducts();
+    });
+  }
 
-  onEnviar2(): void {
-    this.productSubs = this.productService.addProduct({
-      ...this.productForm.value,
-      ownerId: this.authService.getUserId()
-    }).subscribe(
-      res => {
-        console.log('Resp: ', res);
-        this.loadProduct();
+  onEdit(product):void {
+    console.log('A', product);
+    this.productForm.patchValue({
+      description: product.description,
+      imageUrl: product.imageUrl,
+      ownerId: product.ownerId,
+      price: product.price,
+      title: product.title
+
+    });
+
+    this.idEdit = product.id;
+    // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
+  }
+
+  onUpdateProduct():void{
+    this.productUpdate = this.productService.updateProducts(
+        this.idEdit, 
+        {...this.productForm.value,
+        ownerId: this.authService.getUserId()
+      }).subscribe(res => {
+      this.loadProducts();
       },
-      error => {
+      err => {
         console.log('ERROR DE SERVIDOR');
       }
     );
   }
 
-  onDelete(id: any): void {
-    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
-      res => {
-        console.log('Resp: ', res);
-        this.loadProduct();
+  /*onEnviar():void{
+    console.log('VALOR', this.nameControl);
+    console.log('VALOR', this.nameControl.value);
+  }*/
+
+  onEnviar2():void{
+    this.productSubs = this.productService.addProducts({
+      ...this.productForm.value,
+      ownerId: this.authService.getUserId()
+    }).subscribe(res => {
+      window.location.reload();
       },
       err => {
-        console.log('ERROR: ');
+        console.log('ERROR DE SERVIDOR');
       }
     );
   }
 
-  onEdit(product): void {
-    this.idEdit = product.id;
-    this.productForm.patchValue(product);
-  }
-
-  onUpdateProduct(): void {
-    this.productUpdateSubs = this.productService.updateProduct(
-      this.idEdit,
-      {
-        ...this.productForm.value,
-        ownerId: this.authService.getUserId()
-      }
-    ).subscribe(
-      res => {
-        console.log('Resp Update: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR UPDATE');
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
+  ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
-    this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
-    this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
-    this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
+    this.productSubs2 ? this.productSubs2.unsubscribe() : '';
+    this.productDelete ? this.productDelete.unsubscribe() : '';
+    this.productUpdate ? this.productUpdate.unsubscribe() : '';
   }
 }

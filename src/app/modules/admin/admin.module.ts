@@ -12,7 +12,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
-import { MatSliderModule } from '@angular/material/slider';
 import { CardComponent } from './components/card/card.component';
 import { TallaPipe } from '../../talla.pipe';
 
@@ -36,7 +35,6 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSliderModule,
     FormsModule,
     RouterModule.forChild(routes)
   ],
