@@ -16,7 +16,7 @@
 
     <div>
       <input [(ngModel)]="search" placeholder="Busca tu prenda">
-      <button type="button" mat-button (click)="search()"> <mat-icon>search</mat-icon> </button>
+      <button type="button" mat-button (click)="loadProductsSearch()"> <mat-icon>search</mat-icon> </button>
     </div>
 
     <h2 style="background: red;"> HOT </h2>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="row" *ngIf="total.length == 0 ">
-      <div *ngFor="let product of auxHot"
+      <div *ngFor="let product of h"
       class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
         <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.talla | talla }}" urlImage="{{product.urlImage}}" stock="{{product.stock}} " type="{{product.type}}" [product]="product"> </app-card>
       </div>
