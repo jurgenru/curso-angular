@@ -58,7 +58,7 @@ export class AdminComponent implements OnInit{
     });
   }
 
-  loadProductsSearch(): void {
+  search(): void {
     this.total = [];
     this.auxHot = [];
     this.auxCold = [];
