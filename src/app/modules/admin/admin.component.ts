@@ -27,9 +27,9 @@ export class AdminComponent implements OnInit{
   hot = [];
   cold = [];
 
-  result = [];
-  rhot = [];
-  rcold = [];
+  total = [];
+  auxHot = [];
+  auxCold = [];
 
   productForm : FormGroup;
   idEdit:any;
@@ -59,20 +59,20 @@ export class AdminComponent implements OnInit{
   }
 
   loadProductsSearch(): void {
-    this.result = [];
-    this.rhot = [];
-    this.rcold = [];
+    this.total = [];
+    this.auxHot = [];
+    this.auxCold = [];
     if(this.search == null || this.search == ''){
       this.loadProducts();
-      this.result = [];
-      this.rhot = [];
-      this.rcold = [];
+      this.total = [];
+      this.auxHot = [];
+      this.auxCold = [];
     } else {
       this.products.filter(s => 
-        s.name.includes(this.search.toLowerCase()) ? this.result.push(s) : ''
+        s.name.includes(this.search.toLowerCase()) ? this.total.push(s) : ''
       );
-      this.rhot = this.result.filter(s => s.type === 'calor');
-      this.rcold = this.result.filter(s => s.type === 'frio');
+      this.auxHot = this.total.filter(s => s.type === 'calor');
+      this.auxCold = this.total.filter(s => s.type === 'frio');
       
     }
   }
