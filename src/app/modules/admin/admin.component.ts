@@ -96,8 +96,11 @@ export class AdminComponent implements OnInit, OnChanges{
     this.receive = product;
   }
 
-  onReport(){
-    this.store.dispatch(AddProduct({total: this.products.length,cold:this.cold.length,hot: this.hot.length}));
+  onReport(): void {
+    this.store.dispatch(AddProduct({
+      totalHot: this.hot.length,
+      totalCo: this.cold.length
+    }));
   }
 }
 
