@@ -12,7 +12,7 @@ import { AddProduct } from './store/admin.actions';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit, OnChanges{
+export class AdminComponent implements OnInit{
 
   @Output () editForm = new EventEmitter<any>();
 
@@ -27,31 +27,25 @@ export class AdminComponent implements OnInit, OnChanges{
   hot = [];
   cold = [];
 
+  result = [];
+  rhot = [];
+  rcold = [];
+
   productForm : FormGroup;
   idEdit:any;
-  //nameControl = new FormControl();
+
+  search:string;
 
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
               private authService: AuthService,
-              private store: Store<any> ) { 
-                this.productForm = this.formBuilder.group({
-                search: ''
-                })
-              }
-  
-  search() {
-    console.log(this.productForm.value)
-  }
+              private store: Store<any> ) { }
 
   ngOnInit() {
-    this.loadProducts();
-    this.adminSubs = this.store.select(s => s.home).subscribe(res => {
-    });
-   
+    this.loadProducts();   
   }
 
-  ngOnChanges(){
+  onReport(){
     this.store.dispatch(AddProduct({total: this.products.length,cold:this.cold.length,hot: this.hot.length}));
   }
 
@@ -64,11 +58,23 @@ export class AdminComponent implements OnInit, OnChanges{
     });
   }
 
-  onEdit(product):void {
-    console.log('A', product);
-    
-    this.idEdit = product.id;
-    // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
+  loadProductsSearch(): void {
+    this.result = [];
+    this.rhot = [];
+    this.rcold = [];
+    if(this.search == null || this.search == ''){
+      this.loadProducts();
+      this.result = [];
+      this.rhot = [];
+      this.rcold = [];
+    } else {
+      this.products.filter(s => 
+        s.name.includes(this.search.toLowerCase()) ? this.result.push(s) : ''
+      );
+      this.rhot = this.result.filter(s => s.type === 'calor');
+      this.rcold = this.result.filter(s => s.type === 'frio');
+      
+    }
   }
 
   onUpdateProduct():void{
@@ -94,13 +100,6 @@ export class AdminComponent implements OnInit, OnChanges{
 
   saveEvent(product):void {
     this.receive = product;
-  }
-
-  onReport(): void {
-    this.store.dispatch(AddProduct({
-      totalHot: this.hot.length,
-      totalCo: this.cold.length
-    }));
   }
 }
 

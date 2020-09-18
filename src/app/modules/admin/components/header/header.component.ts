@@ -10,15 +10,15 @@ import { AuthService } from '../../../../shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit, OnChanges{
   homeSubs: Subscription;
-  total:number =0;
-  hot: number=0;
-  cold:number=0;
+  totalAmount =0;
+  hot=0;
+  cold=0;
   constructor(private authService: AuthService,
     private store: Store<any>) { }
 
   public ngOnInit(): void {
     this.homeSubs = this.store.select(s => s.admin).subscribe(res => {
-      this.total = res.total;
+      this.totalAmount = res.totalAmount;
       this.hot = res.hot;
       this.cold = res.cold;
     });
