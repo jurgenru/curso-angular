@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { CardComponent } from './components/card/card.component';
 import { TallaPipe } from '../../talla.pipe';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -36,10 +37,12 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatIconModule,
     RouterModule.forChild(routes)
   ],
   providers: [
     ProductService
   ],
+  exports: [RouterModule]
 })
 export class AdminModule { }

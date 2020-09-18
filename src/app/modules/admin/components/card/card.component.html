@@ -1,45 +1,16 @@
-<mat-drawer-container autosize>
-<h2 style="background: blue; padding: 10px;"> COLD </h2>
-<div class="row">
-    <div *ngFor="let product of frio" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-         style="padding: 50px; display: flex; justify-content: center;">
-      <mat-card class="example-card" [ngStyle]="{'background': product.stock == 0 ? 'red' : 'orange'}">
-        <mat-card-header>
-          <mat-card-title>{{product.name | uppercase}}</mat-card-title>
-          <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>TALLA: {{product.size | talla}}</p>
-          <p>TIPO: {{product.type}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button *ngIf="product.stock != 0" style="color:pink" (click)="onEdit(product)">Edit</button>
-          <button mat-button style="color:green" (click)="onDelete(product.id)">Delete</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
-
-<h2 style="background: red; padding: 10px;"> HOT </h2>
-<div class="row">
-    <div *ngFor="let product of calor" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-         style="padding: 50px; display: flex; justify-content: center;">
-      <mat-card class="example-card" [ngStyle]="{'background': stock == 0 ? 'red' : 'orange'}">
-        <mat-card-header>
-          <mat-card-title>{{product.name | uppercase}}</mat-card-title>
-          <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>TALLA: {{product.size | talla}}</p>
-          <p>TIPO: {{product.type}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button style="color:pink" *ngIf="product.stock != 0" (click)="onEdit(product); drawer.toggle()">Edit</button>
-          <button mat-button style="color:green" (click)="onDelete(product.id)">Delete</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
-</mat-drawer-container>
+<mat-card class="example-card" [ngStyle]="{'background': stock == 0 ? 'red' : 'orange'}">
+    <mat-card-header>
+      <mat-card-title>{{ name | uppercase }}</mat-card-title>
+      <mat-card-subtitle>{{ size }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ urlImage }}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>Name: {{ name | uppercase }}</p>
+      <p>Size: {{ size }}</p>
+      <p>Stock: {{stock }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="stock != 0" mat-button (click)="onEdit()" >Edit</button>
+        <button mat-button (click)="onDelete()">Delete</button>
+    </mat-card-actions>
+</mat-card>

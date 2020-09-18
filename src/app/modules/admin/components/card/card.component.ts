@@ -1,96 +1,57 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../../shared/services/auth.service';
 import { ProductService } from '../../../../shared/services/product.service';
- 
- 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit, OnDestroy {
- 
-  products=[];
+export class CardComponent implements OnInit {
 
-  calor=[];
-  frio=[];
-  productFormm : FormGroup;
-  //nameControl = new FormControl();
- 
-  productSubs: Subscription;
-  productGetSubs: Subscription;
-  productDeleteSubs: Subscription;
-  productUpdateSubs: Subscription;
-  idEdit: any;
- 
-  constructor(private productService: ProductService, private formBuilder: FormBuilder) {}
- 
+  productDelete: Subscription;
+  products = [];
+  
+  hot = [];
+  cold = [];
+
+  productForm : FormGroup;
+  idEdit:any;
+
+  @Input () name:string;
+  @Input () size:string;
+  @Input () urlImage:string;
+  @Input () stock:number;
+  @Input () type:string;
+  
+  @Input () product:any;
+
+  @Output () editPage = new EventEmitter<any>();
+
+  onEdit():void {
+    this.editPage.emit(this.product);
+  }
+
+  constructor(private formBuilder: FormBuilder,
+    private productService: ProductService,
+    private authService: AuthService ) { }
+
   ngOnInit() {
-    this.loadProduct();
-     this.productFormm = this.formBuilder.group({
-      name:['', [Validators.minLength(3)]],
-      size:'',
-      stock:'',
-      type:['',[Validators.required]],
-      urlImage:''
-    })
-  } 
- 
-  loadProduct(): void {
-    this.products = [];
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
-      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
-      this.frio = this.products.filter(s => s.type === 'frio');
-      this.calor = this.products.filter(s => s.type === 'calor');
+    
+  }
+
+  onDelete() :void{
+    this.productDelete = this.productService.deleteProduct(this.product.id).subscribe(res => {
+      window.location.reload();
     });
   }
- 
-  onDelete(id: any): void {
-   this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
-      res => {
-        console.log('RESPONSE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR: ');
-      }
-    );
-  }
- 
-  onEdit(product): void {
-    this.idEdit = product.id;
-    this.productFormm.patchValue(product);
-  }
- 
-  onUpdateProduct(): void {
-    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productFormm.value).subscribe(
-      res => {
-        console.log('RESP UPDATE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR UPDATE DE SERVIDOR');
-      }
-    );
-  }
- 
-  onEnviar2(){
-    this.loadProduct();
-    console.log('Form group: ',this.productFormm.value);
-    this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
-      res => {console.log('Resp: ', res)}, err =>{
-        console.log('Error de servidor')
-      })
-  }
- 
-  ngOnDestroy(){
-    this.productSubs ? this.productSubs.unsubscribe():''; 
-    this.productGetSubs ? this.productGetSubs.unsubscribe():'';
-    this.productDeleteSubs ? this.productDeleteSubs.unsubscribe():'';
-    this.productUpdateSubs ? this.productUpdateSubs.unsubscribe():'';
-    }
 
-    
- 
+  ngOnDestroy():void {
+    this.productDelete ? this.productDelete.unsubscribe() : '';
+  }
+
+  
+
 }

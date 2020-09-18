@@ -34,7 +34,15 @@ export class AdminComponent implements OnInit, OnChanges{
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
               private authService: AuthService,
-              private store: Store<any> ) { }
+              private store: Store<any> ) { 
+                this.productForm = this.formBuilder.group({
+                search: ''
+                })
+              }
+  
+  search() {
+    console.log(this.productForm.value)
+  }
 
   ngOnInit() {
     this.loadProducts();
@@ -86,6 +94,10 @@ export class AdminComponent implements OnInit, OnChanges{
 
   saveEvent(product):void {
     this.receive = product;
+  }
+
+  onReport(){
+    this.store.dispatch(AddProduct({total: this.products.length,cold:this.cold.length,hot: this.hot.length}));
   }
 }
 

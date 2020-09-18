@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { AuthService } from '../../../../shared/services/auth.service';
 
 @Component({
@@ -6,14 +8,29 @@ import { AuthService } from '../../../../shared/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges{
+  homeSubs: Subscription;
+  total:number =0;
+  hot: number=0;
+  cold:number=0;
+  constructor(private authService: AuthService,
+    private store: Store<any>) { }
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.homeSubs = this.store.select(s => s.admin).subscribe(res => {
+      this.total = res.total;
+      this.hot = res.hot;
+      this.cold = res.cold;
+    });
+   
   }
 
-  public onLogout(): void{
+  ngOnChanges(){
+    
+  }
+
+  public onLogout(): void {
     this.authService.logout();
   }
+
 }
